@@ -22,3 +22,8 @@ Drop in code for your login & logout commands
             (IsLoginViewVisible, IsHomeViewVisible) = (true, false);
         });
 ```
+
+Required Libraries
+```
+        IdentityModel.OidcClient
+```
