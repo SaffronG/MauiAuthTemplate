@@ -1,0 +1,51 @@
+﻿﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:Auth0LightningLab.Maui.ViewModels" 
+             x:DataType="viewmodels:MainPageViewModel"
+             x:Class="Auth0LightningLab.Maui.MainPage"
+             x:Name="MainPageXaml">
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+
+            <StackLayout
+                x:Name="LoginView"
+                IsVisible="{Binding IsLoginViewVisible}">
+                <Button x:Name="LoginButton"
+                        Text="Log In"
+                        SemanticProperties.Hint="Click to log in"
+                        Command="{Binding LoginCommand}"
+                        HorizontalOptions="Center"/>
+            </StackLayout>
+
+            <StackLayout 
+                x:Name="HomeView"
+                IsVisible="{Binding IsHomeViewVisible}">
+                <Image 
+                    x:Name="UserPicture"
+                    Source="{Binding UserPicture}"
+                    SemanticProperties.Description="User's picture"
+                    HeightRequest="200"
+                    HorizontalOptions="Center"
+                    />
+                <Label
+                    x:Name="UsernameLabel"
+                    Text="{Binding Username}"
+                    SemanticProperties.HeadingLevel="Level2"
+                    SemanticProperties.Description="User's name"
+                    FontSize="18"
+                    HorizontalOptions="Center"
+                    />
+                <Button
+                    x:Name="LogoutButton"
+                    Text="Log Out"
+                    SemanticProperties.Hint="Click to log out"
+                    Command="{Binding LogoutCommand}"
+                    HorizontalOptions="Center"
+                    />
+            </StackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
