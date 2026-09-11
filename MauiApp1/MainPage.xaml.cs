@@ -1,10 +1,9 @@
-﻿namespace MauiApp1
+﻿namespace MauiApp1;
+
+public partial class MainPage : ContentPage
 {
-    public partial class MainPage : ContentPage
+    public MainPage()
     {
-        public MainPage()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

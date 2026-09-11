@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using MauiApp1.Services;
+using Microsoft.Extensions.Logging;
 
 namespace MauiApp1
 {
@@ -19,10 +20,10 @@ namespace MauiApp1
             builder.Logging.AddDebug();
 #endif
             builder.Services.AddSingleton<MainPage>();
-            builder.Services.AddSingleton<Auth0LightningLab.Maui.ViewModels.MainPageViewModel>();
-            builder.Services.AddSingleton<IAuthClient, AuthClient>();
-            //builder.Services.AddSingleton<IShellClient, ShellClient>();
+            builder.Services.AddSingleton<ViewModels.MainPageViewModel>();
 
+            //builder.Services.AddSingleton<IAuthClient, AuthClient>();
+            builder.Services.AddSingleton<IShellClient, ShellClient>();
 
             return builder.Build();
         }

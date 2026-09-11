@@ -1,55 +1,55 @@
-﻿using System.ComponentModel;
+﻿using MauiApp1.Services;
+using System.ComponentModel;
 
-namespace Auth0LightningLab.Maui.ViewModels
+namespace MauiApp1.ViewModels;
+
+public partial class MainPageViewModel(IShellClient shellClient) : INotifyPropertyChanged
 {
-    public class MainPageViewModel(IShellClient shellClient) : INotifyPropertyChanged
+    public event PropertyChangedEventHandler? PropertyChanged;
+    private readonly IShellClient _shellClient = shellClient;
+    public bool IsLoginViewVisible
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
-        private readonly IShellClient _shellClient = shellClient;
-        public bool IsLoginViewVisible
+        get;
+        set
         {
-            get;
-            set
-            {
-                field = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsLoginViewVisible)));
-            }
-        } = true;
-        public bool IsHomeViewVisible
+            field = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsLoginViewVisible)));
+        }
+    } = true;
+    public bool IsHomeViewVisible
+    {
+        get;
+        set
         {
-            get;
-            set
-            {
-                field = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsHomeViewVisible)));
-            }
-        } = false;
-        public string Username
+            field = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsHomeViewVisible)));
+        }
+    } = false;
+    public string Username
+    {
+        get;
+        set
         {
-            get;
-            set
-            {
-                field = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Username)));
-            }
-        } = String.Empty;
-        public string UserPicture
+            field = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Username)));
+        }
+    } = String.Empty;
+    public string UserPicture
+    {
+        get;
+        set
         {
-            get;
-            set
-            {
-                field = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(UserPicture)));
-            }
-        } = String.Empty;
+            field = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(UserPicture)));
+        }
+    } = String.Empty;
 
-        public Command LoginCommand => field ??= new(async () =>
-        {
-            throw new NotImplementedException();
-        });
-        public Command LogoutCommand => field ??= new(async () =>
-        {
-            throw new NotImplementedException();
-        });
-    }
+    public Command LoginCommand => field ??= new(async () =>
+    {
+        throw new NotImplementedException();
+    });
+    public Command LogoutCommand => field ??= new(async () =>
+    {
+        throw new NotImplementedException();
+    });
 }
