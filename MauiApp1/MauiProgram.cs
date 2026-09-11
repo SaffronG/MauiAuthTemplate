@@ -19,8 +19,8 @@ namespace MauiApp1
             builder.Logging.AddDebug();
 #endif
             builder.Services.AddSingleton<MainPage>();
-            builder.Services.AddSingleton<MainPageViewModel>();
-            //builder.Services.AddSingleton<IAuthClient, AuthClient>();
+            builder.Services.AddSingleton<Auth0LightningLab.Maui.ViewModels.MainPageViewModel>();
+            builder.Services.AddSingleton<IAuthClient, AuthClient>();
             //builder.Services.AddSingleton<IShellClient, ShellClient>();
 
 
