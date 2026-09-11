@@ -25,5 +25,5 @@ Drop in code for your login & logout commands
 
 Required Libraries
 ```
-        IdentityModel.OidcClient
+        Duende.IdentityModel.OidcClient
 ```
