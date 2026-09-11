@@ -142,3 +142,11 @@ public class LoopbackBrowser : IBrowser
     }
 }
 ```
+
+May need if Authority is declined
+```
+		---------------------------------------IAuthClient.cs--------------------------------------------
+        options.Policy.Discovery.AdditionalEndpointBaseAddresses.Add("https://oauth2.googleapis.com");
+        options.Policy.Discovery.AdditionalEndpointBaseAddresses.Add("https://openidconnect.googleapis.com");
+        options.Policy.Discovery.AdditionalEndpointBaseAddresses.Add("https://www.googleapis.com");
+```
