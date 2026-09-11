@@ -19,11 +19,12 @@ namespace MauiApp1
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
-            builder.Services.AddSingleton<MainPage>();
-            builder.Services.AddSingleton<ViewModels.MainPageViewModel>();
+            builder.Services.AddTransient<MainPage>();
+            builder.Services.AddTransient<ViewModels.MainPageViewModel>();
 
-            //builder.Services.AddSingleton<IAuthClient, AuthClient>();
+            builder.Services.AddSingleton<IAuthClient, AuthClient>();
             builder.Services.AddSingleton<IShellClient, ShellClient>();
+            builder.Services.AddSingleton<Duende.IdentityModel.OidcClient.Browser.IBrowser, MauiAuthenticatorBrowser>();
 
             return builder.Build();
         }

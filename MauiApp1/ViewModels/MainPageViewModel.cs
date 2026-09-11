@@ -3,10 +3,11 @@ using System.ComponentModel;
 
 namespace MauiApp1.ViewModels;
 
-public partial class MainPageViewModel(IShellClient shellClient) : INotifyPropertyChanged
+public partial class MainPageViewModel(IShellClient shellClient, IAuthClient client) : INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler? PropertyChanged;
     private readonly IShellClient _shellClient = shellClient;
+    private readonly IAuthClient _authClient = client;
     public bool IsLoginViewVisible
     {
         get;
@@ -46,10 +47,21 @@ public partial class MainPageViewModel(IShellClient shellClient) : INotifyProper
 
     public Command LoginCommand => field ??= new(async () =>
     {
-        throw new NotImplementedException();
+        var result = await _authClient.LoginAsync();
+        if (!result.IsError)
+        {
+            Username = result.User.FindFirst("name")?.Value ?? "Unknown";
+            UserPicture = result.User.FindFirst("picture")?.Value ?? "";
+            (IsLoginViewVisible, IsHomeViewVisible) = (false, true);
+        }
+        else
+        {
+            await _shellClient.DisplayAlertAsync("Error", result.ErrorDescription, "OK");
+        }
     });
     public Command LogoutCommand => field ??= new(async () =>
     {
-        throw new NotImplementedException();
+        await _authClient.LoginAsync();
+        (IsLoginViewVisible, IsHomeViewVisible) = (true, false);
     });
 }
