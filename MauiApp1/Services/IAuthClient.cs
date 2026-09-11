@@ -18,15 +18,15 @@ public class AuthClient : IAuthClient
         var browser = new LoopbackBrowser(); // listens on a random free loopback port
         var options = new OidcClientOptions
         {
-            ClientId = "551874123815-h8qjk337l25vdpn8si7v3uto7gmcksf1.apps.googleusercontent.com",
-            ClientSecret = "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", // see Windows gotchas
+            ClientId = "ID",
+            ClientSecret = "SECRET",
             RedirectUri = browser.RedirectUri,           // e.g. http://127.0.0.1:53127/
             Browser = browser,
         };
 #else
         var options = new OidcClientOptions
         {
-            ClientId = "551874123815-e6n6sf7ad2676uvqs2rpvglpuqgjaci9.apps.googleusercontent.com",
+            ClientId = "ID",
             RedirectUri = "com.tauthlight.maui:/callback",
             Browser = new MauiAuthenticatorBrowser(),
         };
